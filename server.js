@@ -23,7 +23,7 @@ app.get('/server.js',function(req,res){
 });
 
 app.get('/article_one',function(req,res){
-    res.send('Hello This is article_one');
+    res.sendFile(path.join(__dirname,'ui','article-one'));
 });
 
 app.get('/article_two',function(req,res){
