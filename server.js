@@ -27,11 +27,11 @@ app.get('/article_one',function(req,res){
 });
 
 app.get('/article_two',function(req,res){
-    res.send('Hello this is article two');
+    res.sendFile(path.join(__dirname,'ui','article-two.html'));
 });
 
 app.get('/article_three',function(req,res){
-    res.send('Hello this is article three');
+    res.sendFile(path.join(__dirname,'ui','article-three.html'));
 });
 
 
