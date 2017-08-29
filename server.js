@@ -3,6 +3,100 @@ var morgan = require('morgan');
 var path = require('path');
 
 var app = express();
+var article={
+    'article-one':{
+        title:'Article One',
+        heading:'Article One',
+        content:` <p>
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+            </p>
+            <p>
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+            </p>
+            <p>
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+            </p>`
+    },
+    'article-two':{
+        title:'Article Two',
+        heading:'Article Two',
+        content:`<p>
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+            </p>
+             <p>
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+            </p>
+             <p>
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+            </p>`
+        
+    },
+    'article-three':{
+        title:'Article Three',
+        heading:'Article Three',
+        content:`<p>
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+            </p>
+            <p>
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+            </p>
+            <p>
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+            </p>`
+    }
+};
+
+var htmlTemplate=funtion(string){
+    var title=string.title;
+    var heading=string.heading;
+    var content=string.content;
+    var template=`<html>
+    <head>
+        <title>
+            ${title}
+        </title>
+        <meta name="viewport" content="width=device-width , initial-scale=1">
+        <link href="ui/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class=container>
+            <div>
+                <a href="/">HOME</a>
+            </div>
+            <div>
+                <a href="article_two">Article Two</a>
+            </div>
+            <div>
+                <a href="article_three">Article Three</a>
+            </div>
+            <hr/>
+            <h2>${heading}</h2>
+            ${content}
+        </div>
+    </body>
+</html>
+`;
+return template;
+}
+
 app.use(morgan('combined'));
 
 app.get('/', function (req, res) {
@@ -22,17 +116,12 @@ app.get('/server.js',function(req,res){
     res.sendFile(path.join(__dirname,'server.js'));
 });
 
-app.get('/article_one',function(req,res){
-    res.sendFile(path.join(__dirname,'ui','article-one.html'));
+app.get('/:articles',function(req,res){
+    var articles=req.params.articles;
+    var string = htmlTemplate(articles);
+    res.send(string);
 });
 
-app.get('/article_two',function(req,res){
-    res.sendFile(path.join(__dirname,'ui','article-two.html'));
-});
-
-app.get('/article_three',function(req,res){
-    res.sendFile(path.join(__dirname,'ui','article-three.html'));
-});
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
