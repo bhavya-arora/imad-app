@@ -5,6 +5,6 @@ element.innerHTML='Hello This is Changed Text';
 
 ////Lets move the image
 var img=document.getElementById('madi');
-img.onClick=function(){
+img.onlick=function(){
     img.style.marginLeft='100px';
 }
