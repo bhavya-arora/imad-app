@@ -81,12 +81,6 @@ function htmlTemplate (string){
             <div>
                 <a href="/">HOME</a>
             </div>
-            <div>
-                <a href="article_two">Article Two</a>
-            </div>
-            <div>
-                <a href="article_three">Article Three</a>
-            </div>
             <hr/>
             <h2>${heading}</h2>
             ${content}
