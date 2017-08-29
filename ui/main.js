@@ -7,9 +7,9 @@ element.innerHTML='Hello This is Changed Text';
 var img=document.getElementById('madi');
 var leftMargin=0;
 function moveRight (){
-    leftMargin=leftMargin+10;
+    leftMargin=leftMargin+5;
     img.style.marginLeft=leftMargin+'px';
 }
 img.onclick = function(){
-   setInterval(moveRight,100);
+   setInterval(moveRight,50);
 }
