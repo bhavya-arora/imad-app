@@ -5,6 +5,11 @@ element.innerHTML='Hello This is Changed Text';
 
 ////Lets move the image
 var img=document.getElementById('madi');
+var leftMargin=0;
+function moveRight (){
+    leftMargin=leftMargin+10;
+    img.style.marginLeft=leftMargin+'px';
+}
 img.onclick = function(){
-    img.style.marginLeft='100px';
+   setInterval(moveRight,100);
 }
