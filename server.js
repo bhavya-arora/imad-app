@@ -116,9 +116,9 @@ app.get('/server.js',function(req,res){
     res.sendFile(path.join(__dirname,'server.js'));
 });
 
-app.get('/:articles',function(req,res){
-    var articl=req.params.articles;
-    var string = htmlTemplate(article[articl]);
+app.get('/:articleName',function(req,res){
+    var articleName=req.params.articleName;
+    var string = htmlTemplate(article[articlName]);
     res.send(string);
 });
 
