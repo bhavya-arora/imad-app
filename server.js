@@ -64,7 +64,7 @@ var article={
     }
 };
 
-var htmlTemplate=funtion(string){
+function htmlTemplate (string){
     var title=string.title;
     var heading=string.heading;
     var content=string.content;
