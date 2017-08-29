@@ -118,7 +118,7 @@ app.get('/server.js',function(req,res){
 
 app.get('/:articles',function(req,res){
     var articl=req.params.articles;
-    var string = htmlTemplate(articl);
+    var string = htmlTemplate(article[articl]);
     res.send(string);
 });
 
