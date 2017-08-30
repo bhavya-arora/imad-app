@@ -18,6 +18,7 @@ img.onclick = function(){
 
 var button=document.getElementById('counter');
 var span=document.getElementById('count');
+span.innerHTML=2;
 var counter=0;
 button.onclick=function(){
     counter = counter+1;
