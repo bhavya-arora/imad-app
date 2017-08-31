@@ -24,16 +24,75 @@ app.get('/test-db',function(req,res){
     });
 });
 
+var article={
+    'article-one':{
+        title:'Article One',
+        heading:'Article One',
+        content:` <p>
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+            </p>
+            <p>
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+            </p>
+            <p>
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
+            </p>`
+    },
+    'article-two':{
+        title:'Article Two',
+        heading:'Article Two',
+        content:`<p>
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+            </p>
+             <p>
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+            </p>
+             <p>
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
+            </p>`
+        
+    },
+    'article-three':{
+        title:'Article Three',
+        heading:'Article Three',
+        content:`<p>
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+            </p>
+            <p>
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+            </p>
+            <p>
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
+            </p>`
+    }
+};
 
-
-function htmlTemplate (string){
-    var title=string.title;
-    var heading=string.heading;
-    var content=string.content;
+function htmlTemplate (object){
+    var title=object.title;
+    var heading=object.heading;
+    var content=object.content;
     var template=`<html>
     <head>
         <title>
-            ${title}
+            $title
         </title>
         <meta name="viewport" content="width=device-width , initial-scale=1">
         <link href="ui/style.css" rel="stylesheet"/>
