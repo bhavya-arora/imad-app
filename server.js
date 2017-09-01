@@ -69,7 +69,7 @@ app.post('/login', function (req, res) {
           } else {
               // Match the password
               var dbString = result.rows[0].password;
-              var salt = dbString.split('$')[3];
+              var salt = dbString.split('$')[1];
               var hashedPassword = hash(password, salt); // Creating a hash based on the password submitted and the original salt
               if (hashedPassword === dbString) {
                 
