@@ -5,10 +5,19 @@ submit.onclick=function(){
     var request=new XMLHttpRequest();
     request.onreadystatechange=function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            if(request.status === 200){
-                console.log('LOGGED IN');
-                alert('You are logged in');
-            }
+            if (request.status === 200) {
+                  submit.value = 'Sucess!';
+                  console.log('success');
+              } else if (request.status === 403) {
+                  submit.value = 'Invalid credentials. Try again?';
+                  
+              } else if (request.status === 500) {
+                  alert('Something went wrong on the server');
+                  submit.value = 'Login';
+              } else {
+                  alert('Something went wrong on the server');
+                  submit.value = 'Login';
+              }
         }
         
     };
@@ -22,3 +31,4 @@ submit.onclick=function(){
     console.log('after json');
    
 };
+
