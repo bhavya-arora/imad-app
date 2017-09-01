@@ -56,37 +56,31 @@ app.post('/create-user',function(req,res){
 });
 
 
-app.post('/login', function (req, res) {
-   var username = req.body.username;
-   var password = req.body.password;
-   
-   pool.query('SELECT * FROM "users" WHERE username = $1', [username], function (err, result) {
-      if (err) {
-          res.status(500).send(err.toString());
-      } else {
-          if (result.rows.length === 0) {
-              res.status(403).send('username/password is invalid');
+
+app.post('/login',function(req,res){
+       // username, password
+       // {"username": "tanmai", "password": "password"}
+       // JSON
+       var username = req.body.username;
+       var password = req.body.password;
+       pool.query('SELECT FROM  "users" WHERE username=$1', [username], function (err, result) {
+          if (err) {
+              res.status(500).send(err.toString());
           } else {
-              // Match the password
-              var dbString = result.rows[0].password;
-              var salt = dbString.split('$')[2];
-              var hashedPassword = hash(password, salt); // Creating a hash based on the password submitted and the original salt
-              if (hashedPassword === dbString) {
-                
-                // Set the session
-              
-                // set cookie with a session id
-                // internally, on the server side, it maps the session id to an object
-                // { auth: {userId }}
-                
-                res.send('credentials correct!');
-                
-              } else {
-                res.status(403).send('username/password is invalid');
+              if(result.rows.length===0){
+                  res.send(403).send('Username/password is invalid');
+              }else{
+                  var dbString=result.rows[0].password;
+                  var salt=dbString.split('$')[2];
+                  var hashedValue=hash(password,salt);
+                  if(hashedValue===dbString){
+                      res.send('Credentials are corerect');
+                  }else{
+                       res.send(403).send('Username/password is invalid');
+                  }
               }
           }
-      }
-   });
+       });
 });
 
 
