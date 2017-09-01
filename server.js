@@ -55,9 +55,7 @@ app.post('/create-user',function(req,res){
     });
 });
 
-
 app.post('/login',function(req,res){
-        app.post('/create-user', function (req, res) {
        // username, password
        // {"username": "tanmai", "password": "password"}
        // JSON
@@ -74,14 +72,13 @@ app.post('/login',function(req,res){
                   var salt=dbString.split('$')[2];
                   var hashedValue=hash(password,salt);
                   if(hashedValue===dbString){
-                      res.send('Credentials are correct');
+                      res.send('Credentials are corerect');
                   }else{
-                      res.send(403).send('Username/password is invalid');
+                      
                   }
               }
           }
        });
-    });
 });
 
 
