@@ -54,66 +54,6 @@ app.post('/create-user',function(){
     });
 });
 
-var article={
-    'article-one':{
-        title:'Article One',
-        heading:'Article One',
-        content:` <p>
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-            </p>
-            <p>
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-            </p>
-            <p>
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-                This is my article one.This is my article one.This is my article one.This is my article one.This is my article one.
-            </p>`
-    },
-    'article-two':{
-        title:'Article Two',
-        heading:'Article Two',
-        content:`<p>
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-            </p>
-             <p>
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-            </p>
-             <p>
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-                This is my article two.This is my article two.This is my article two.This is my article two.This is my article two.
-            </p>`
-        
-    },
-    'article-three':{
-        title:'Article Three',
-        heading:'Article Three',
-        content:`<p>
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-            </p>
-            <p>
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-            </p>
-            <p>
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-                This is my third article.This is my third article.This is my third article.This is my third article.This is my third article.
-            </p>`
-    }
-};
 
 function htmlTemplate (object){
     var title=object.title;
@@ -194,10 +134,6 @@ app.get('/articles/:articleName',function(req,res){
     });
 });
 
-app.get('/:articleName',function(req,res){
-    var articleName=req.params.articleName;
-    res.send(htmlTemplate(article[articleName]));
-});
 
 
 
