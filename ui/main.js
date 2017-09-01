@@ -1,6 +1,7 @@
 ///////submit button
 var submit=document.getElementById('submit_btn');
 submit.onclick=function(){
+    console.log('under submit');
     var request=new XMLHttpRequest();
     request.onreadystatechange=function(){
         if(request.readyState === XMLHttpRequest.DONE){
