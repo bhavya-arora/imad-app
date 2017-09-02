@@ -34,30 +34,38 @@ submit.onclick=function(){
    
 };
 
-var register=document.getElementById('submit_btnRe');
-register.onclick=function(){
-    console.log('Onclick');
-  var request= new XMLHttpRequest();
-  request.onreadystatechange=function(){
-      ////This is a call back
-     if(request.readyState === XMLHttpRequest.DONE){
-         console.log('under done');
-         if(request.status===200){
-             console.log('200 request');
-             alert('Registered');
-         }else{
-             register.value='Something went wrong';
-         }
-         
-     }
-  };
-  var username=document.getElementById('usernameRe');
-  console.log(username);
-  var password=document.getElementById('passwordRe');
-  console.log(password);
-  request.open('POST','http://gobhavyaarora15.imad.hasura-app.io/create-user',true);
-  request.setRequestHeader('Content-Type','application/json');
-  request.send(JSON.stringify({username:username,password:password}));
-  console.log('request sent');
+var submitRe=document.getElementById('submit_btnRe');
+submitRe.onclick=function(){
+    console.log('under submit');
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            if (request.status === 200) {
+                  submitRe.value = 'Sucess!';
+                  console.log('success');
+                  alert('Sucess!');
+              } else if (request.status === 403) {
+                  submitRe.value = 'Invalid credentials. Try again?';
+                  
+              } else if (request.status === 500) {
+                  alert('Something went wrong on the server');
+                  submitRe.value = 'Login';
+              } else {
+                  alert('Something went wrong on the server');
+                  submitRe.value = 'Login';
+              }
+        }
+        
+    };
+    var username=document.getElementById('usernameRe').value;
+    var password=document.getElementById('passwordRe').value;
+    console.log(username);
+    console.log(password);
+    request.open('POST','http://gobhavyaarora15.imad.hasura-app.io/create-user',true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    console.log('after post');
+    request.send(JSON.stringify({username:username,password:password}));
+    console.log('after json');
+   
 };
 
