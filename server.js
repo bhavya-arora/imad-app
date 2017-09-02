@@ -4,6 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser=require('body-parser');
+var session=require('express-session');
 
 var config = {
     user:'gobhavyaarora15',
@@ -14,6 +15,10 @@ var config = {
 };
 
 var app = express();
+app.use(session({
+    secret:'somerandomstring',
+    cookie:{maxAge:1000*60*60*24*30}
+}));
 app.use(bodyParser.json());
 
 var pool=new Pool(config);
@@ -74,6 +79,7 @@ app.post('/login',function(req,res){
                   var salt=dbString.split('$')[2];
                   var hashedValue=hash(password,salt);
                   if(hashedValue===dbString){
+                      req.session.auth={userId:result.rows[0].id};
                       res.send('Credentials are corerect');
                   }else{
                        res.send(403).send('Username/password is invalid');
@@ -83,6 +89,14 @@ app.post('/login',function(req,res){
        });
 });
 
+app.get('/check-login',function(req,res){
+    if(req.session && req.session.auth && req.session.userId){
+        res.send('you are logged in as '+req.session.userId);
+        
+    }else{
+        res.send('You are not logged in ');
+    }
+});
 
 
 function htmlTemplate (object){
