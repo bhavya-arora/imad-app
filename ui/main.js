@@ -35,7 +35,7 @@ submit.onclick=function(){
 };
 
 var register=document.getElementById('submit_btnRe');
-regiter.onclick=function(){
+register.onclick=function(){
     console.log('Onclick');
   var request=XMLHttpRequest();
   request.onreadystatechange=function(){
