@@ -16,7 +16,7 @@ var config = {
 
 var app = express();
 app.use(session({
-    secret:'somerandomstring',
+    secret:'someRandomSecretValue',
     cookie:{maxAge:1000*60*60*24*30}
 }));
 app.use(bodyParser.json());
@@ -91,7 +91,7 @@ app.post('/login',function(req,res){
 
 app.get('/check-login',function(req,res){
     if(req.session && req.session.auth && req.session.userId){
-        res.send('you are logged in as '+req.session.userId);
+        res.send('you are logged in as ');
         
     }else{
         res.send('You are not logged in ');
