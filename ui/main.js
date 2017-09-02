@@ -37,7 +37,7 @@ submit.onclick=function(){
 var register=document.getElementById('submit_btnRe');
 register.onclick=function(){
     console.log('Onclick');
-  var request=XMLHttpRequest();
+  var request= new XMLHttpRequest();
   request.onreadystatechange=function(){
       ////This is a call back
      if(request.readyState === XMLHttpRequest.DONE){
