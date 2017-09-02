@@ -36,11 +36,14 @@ submit.onclick=function(){
 
 var register=document.getElementById('submit_btnRe');
 regiter.onclick=function(){
+    console.log('Onclick');
   var request=XMLHttpRequest();
   request.onreadystatechange=function(){
       ////This is a call back
      if(request.readyState === XMLHttpRequest.DONE){
+         console.log('under done');
          if(request.status===200){
+             console.log('200 request');
              alert('Registered');
          }else{
              register.value='Something went wrong';
@@ -49,9 +52,12 @@ regiter.onclick=function(){
      }
   };
   var username=document.getElementById('usernameRe');
+  console.log(username);
   var password=document.getElementById('passwordRe');
+  console.log(password);
   request.open('POST','http://gobhavyaarora15.imad.hasura-app.io/create-user',true);
   request.setRequestHeader('Content-Type','application/json');
   request.send(JSON.stringify({username:username,password:password}));
+  console.log('request sent');
 };
 
