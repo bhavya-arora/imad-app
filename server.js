@@ -42,7 +42,7 @@ function hash(input,salt){
 ///Sample example of hash function
 app.get('/hash/:input',function(req,res){
     var hashedString=hash(req.params.input,'this-is-random-string');
-    res.send(hashedString);
+    res.send(hashedString).toString();
 });
 
 
