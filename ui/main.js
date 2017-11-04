@@ -1,4 +1,5 @@
 ///////submit button
+console.log('under main.js');
 var submit=document.getElementById('submit_btn');
 submit.onclick=function(){
     console.log('under submit');
