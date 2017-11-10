@@ -53,7 +53,7 @@ app.post('/create-user',function(req,res){
     var dbString=hash(password,salt);
     pool.query('INSERT INTO "users" (username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
         if(err){
-            res.status(500).send(JSON.stringify({"error":"doesnot create"}));
+            res.status(403).send(JSON.stringify({"error":"doesnot create"}));
         }else{
             res.status(200).send(JSON.stringify({"message":"User Created"}));
         }
